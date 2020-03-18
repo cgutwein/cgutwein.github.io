@@ -12,7 +12,7 @@ Age curves are generated using the difference between wRC+ from one season and t
 
 ## Age Curve 2000 - 2020
 The age curve presented below shows the cumulative delta wRC+ for MLB players as a function of age. We see the total peaks at Age 27 and then falls off gradually afterwards. Daniel Murphy's career trajectory is plotted here as well to see his career numbers compared to average. His peak season wRC+ value of 154 occurs during his Age 31 season, however, each of the three following seasons have seen his wRC+ drop by at least 19 points outpacing average decline. Another season of ~20 point drop in wRC+ would be devastating as it would most definitely result in a Josh Fuentes or AAAA type player taking over (at least you could expect something like that).
-![](/images/age_curve.png)
+![](/../images/age_curve.png)
 Murphy’s age curve appears to have a much sharper decline than the historical average suggests, but it’s quite possible that he could reverse his fortune. We’ll next take a look at the Age 35 season and the possible outcomes for the Rockies' 1B.
 
 ## Predicting Age 35 Season Value
@@ -21,7 +21,7 @@ Entering one's age 35 season, the average MLB hitter over the last two decades e
 ## Delta wRC+ Distribution
 The statistical distribution resembles a normal distribution curve with a mean of -4 and a standard deviation of 26. Thus approximately two-thirds of sluggers entering his Age 35 season will gain between -30 and 22 wRC+. This represents the likely range of outcomes for Murphy in 2020 which would ends up being an expected wRC+ between 56 and 108. Admittedly, it’s a pretty wide range, but understanding this is important because while it’s not impossible for him to bounce back in a big way, it’s quite unlikely he’ll eclipse a wRC+ of 110.
 
-![](/images/age_35_hist1.png)
+![](/../images/age_35_hist1.png)
 ## Player Comps
 There are 218 players in our Age 35 bucket. If we look at player seasons that more closely resemble Murphy’s profile, there is evidence to suggest a more optimistic range of output. Jim Thome, bounced back from a sub-par 2005 to boost his wRC+ by 60 points in his age 35 season. Similar to Murphy, his age 34 including an injury and career low wRC+. However, unlike Murphy, he’s a HOF home run hitter and slugged 42 home runs at age 35. I’m fairly certain that will not happen for Daniel Murphy. A better comp, might be AJ Pierzynski, who in 2012 saw an increase of 27 wRC+ from his age 34 season. It’s good news to have some precedence that shows while statistically improbable, there are case examples that give us hope.
 
