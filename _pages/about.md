@@ -4,26 +4,10 @@ title: About
 permalink: /about/
 ---
 
-[Reverie](https://github.com/amitmerchant1990/reverie) is a Jekyll theme which is simple and opinionated. It's actually a fork of [jekyll-now](https://github.com/barryclark/jekyll-now) with some additional features and personal touches which I've implemented to suit my needs for [my blog](https://www.amitmerchant.com).
+[CG Analytics](https://cgutwein.github.io) is a sports analytics blog powered by Jekyll. My intent for this collection of posts is to dive into sports related topics, typically in a way such that each post has two parts: a technical piece that shares some code snippets and insights on methods for pulling data and doing analysis etc. And the a second post that is meant for a typical consumer of sports related content.
 
-This is a plug-and-play Jekyll theme which you can use on GitHub Pages without even setting up a local environment.
+# About Me
+I am a Data Scientist and live in Denver, Colorado. I follow the Colorado Rockies (a team that will be featured quite often) and contribute to the blog [Purple Row](https://www.purplerow.com) as a Staff Writer. I like to snowboard, mountain bike, and participate in triathlon.
 
-## Features
-
-- Command-line free fork-first workflow, using GitHub.com to create, customize and post to your blog
-- Fully responsive and mobile optimized base theme
-- Sass/Coffeescript support using Jekyll 2.0
-- Free hosting on your GitHub Pages user site
-- All the SEO goodies comes in-built
-- Markdown blogging
-- Syntax highlighting using Pygments
-    - [Dracula syntax theme](https://draculatheme.com/) included
-- Disqus commenting
-- Google Analytics integration
-- Fuzzy search across blog posts
-- Pagination of posts works out-of-the-box.
-- Categorize posts out-of-the box
-- RSS Feed
-- In-built sitemap
-
-Learn more about it [here](https://github.com/amitmerchant1990/reverie) on how to get started.
+# Contact
+Please feel free to send me an e-mail at cgutwein05@gmail.com if you would be interested in contributing to the site.
