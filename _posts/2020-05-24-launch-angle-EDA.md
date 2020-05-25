@@ -10,7 +10,7 @@ Ahhh, yes! You've heard of it - the almighty launch angle! Actually, students of
 > If you get the ball into the air with power, you have the gift to produce the most important hit in baseball — the home run. More important is that you hit consistently with authority. For those purposes I advocate a slight upswing (from level to about 10 degrees)
 
 Williams is not exactly sure what the angle is, but he approximates 10 degrees with the knowledge that anything less and you'll be unlikely to get an extra-base hit. Anything too much more than 10 degrees is most likely an out. The chart below shows batted results (i.e. balls put in play plus home runs and leaving out sacrifice bunts) with a launch angle of less than or equal to 10 degrees using Statcast data from 2019.
-![](/../images/ted.png =250x)
+<img src="/../images/ted.png" alt="bar chart" width="250">
 
 To interpret Williams' wisdom, it's pretty clear where he's coming from. Maybe his reference to 10 degrees is approximate, but the number of outs generated in all of MLB in 2019 on batted balls at an angle less than 10 degrees is almost identical to that over 10 degrees. The biggest takeaway here, though, is that a hitter will score at best a double, when swinging down on the ball. This simple message from "The Science of Hitting" is at the heart of the power surge MLB saw in 2019.
 
