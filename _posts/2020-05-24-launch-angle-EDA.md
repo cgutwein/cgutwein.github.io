@@ -33,4 +33,4 @@ The comparison between Trout and Cozart is interesting because while they both g
 
 Launch angle and exit velocity go hand-in-hand, and next week we'll be posting a short follow up to today's dive into launch angle, examining the history of these measurements and where they fit within the context of MLB's steroid era and the **juiced ball** of 2019.
 
-The charts in this post were created in python using Statcast data. Supporting documentation can be found [here]().
+The charts in this post were created in python using Statcast data. Supporting documentation can be found [here](https://github.com/cgutwein/cgutwein.github.io/blob/master/notebooks/2020-5-24%20Launch%20Angle.ipynb).
