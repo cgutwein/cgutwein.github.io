@@ -1,6 +1,6 @@
 ---
 layout: post
-title: EDA: Launch Angle
+title: EDA - Launch Angle
 categories: [baseball]
 ---
 Let's take the fun out of baseball for a second. Well, I suppose for some of us the topics of *launch angle* and *Exit Velo* and these new-fangled hitting terms fun. Baseball today is not as simple as picking up a bat and swinging hard. The *science* of hitting has leveled up in recent years, with players focused on elevating the ball being rewarding with a multitude of home runs and big pay days. As detailed in [Swing Kings](https://www.amazon.com/Swing-Kings-Inside-Baseballs-Revolution/dp/0062872109), independent hitting coaches have leveraged the use of video and intensive study of home run giants such as [Barry Bonds](https://www.baseball-reference.com/players/b/bondsba01.shtml) to create the perfect swing. Which, by today's metrics, means the perfect home run swing. Let's take a look at some real MLB data to see what this looks like in practice.
@@ -10,7 +10,7 @@ Ahhh, yes! You've heard of it - the almighty launch angle! Actually, students of
 > If you get the ball into the air with power, you have the gift to produce the most important hit in baseball — the home run. More important is that you hit consistently with authority. For those purposes I advocate a slight upswing (from level to about 10 degrees)
 
 Williams is not exactly sure what the angle is, but he approximates 10 degrees with the knowledge that anything less and you'll be unlikely to get an extra-base hit. Anything too much more than 10 degrees is most likely an out. The chart below shows batted results (i.e. balls put in play plus home runs and leaving out sacrifice bunts) with a launch angle of less than or equal to 10 degrees using Statcast data from 2019.
-![](/../images/ted.png){:height="75%" width="75%"}
+![](/../images/ted.png)
 
 To interpret Williams' wisdom, it's pretty clear where he's coming from. Maybe his reference to 10 degrees is approximate, but the number of outs generated in all of MLB in 2019 on batted balls at an angle less than 10 degrees is almost identical to that over 10 degrees. The biggest takeaway here, though, is that a hitter will score at best a double, when swinging down on the ball. This simple message from "The Science of Hitting" is at the heart of the power surge MLB saw in 2019.
 
