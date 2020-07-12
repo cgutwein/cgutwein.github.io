@@ -38,7 +38,7 @@ So we've established that sample size is important and has a significant impact 
 
 $$\beta = \Phi\left(\frac{|\mu_t-\mu_c|\sqrt{N}}{2\sigma}-\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right)$$
 
-Power is represented by $$\beta$$ and the $$\Phi(\bullet)$$ is the normal cumulative distribution function with the effect size being represented by $$\left|\mu_t-\mu_c\right|$$, $$\alpha$$ being the desired level of statistical significance which is typically 0.05, and N representing the sample size. Let's rely on the *statsmodel* Python module for our power calculations. Before we get back to baseball, let's use our coin-flipping example to demonstrate how this works.
+Power is represented by $$\beta$$ and the $$\Phi(\bullet)$$ is the normal cumulative distribution function with the effect size being represented by $$\mid\mu_t-\mu_c\mid$$, $$\alpha$$ being the desired level of statistical significance which is typically 0.05, and N representing the sample size. Let's rely on the *statsmodel* Python module for our power calculations. Before we get back to baseball, let's use our coin-flipping example to demonstrate how this works.
 
 Suppose we have a coin that we suspect is biased to flipping tails 40 percent of the time. If we were to conduct an experiment to *prove* this suspicion, how many times would we need to flip the coin? The power solver in *statsmodels* allows us to specify our desired power and it will compute the number of samples needed. Here, we're going to aim for a power of 0.8 and an $$\alpha$$ of 0.05 which are both pretty standard in scientific research. We'll also need to specify the **effect size**, which will be the difference between the an unbiased coin ($$\mu_c=0.5$$) and the supposed biased coin ($$\mu_t=0.4$$).
 ```python
