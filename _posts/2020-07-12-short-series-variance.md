@@ -79,7 +79,7 @@ Experiment 1: 0.4009044585987261 0.012835044474719165 0.00016473836666801897
 Experiment 2: 0.40493333333333337 0.04107034615550901 0.0016867733333333337
 ```
 
-The mean results of both experiments is essentially identical, with heads at 40.1% for Experiment 1 and 40.5% for Experiment 2. But the variance for Experiment 2 is almost three times what it is for Experiment 1. Typically we would set a confidence interval of <img src="https://render.githubusercontent.com/render/math?math=2\sigma">, or two standard deviations, from the mean. This gives us the following conclusion from the two experiments:
+The mean results of both experiments is essentially identical, with heads at 40.1% for Experiment 1 and 40.5% for Experiment 2. But the variance for Experiment 2 is almost three times what it is for Experiment 1. Typically we would set a confidence interval of $$2\sigma$$, or two standard deviations, from the mean. This gives us the following conclusion from the two experiments:
 * Experiment 1: True probability of heads is between 37.5% and 42.7%
 * Experiment 2: True probability of heads is between 32.3% and 48.7%
 ![](/../images/SIMULATION.E1.image1.png)
