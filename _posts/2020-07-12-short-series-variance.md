@@ -97,4 +97,4 @@ To preface our simulation of the Rockies season, we need to establish a wins tar
 
 For a 162-game season, the Rockies have a less than 0.1 percent chance of winning more than 83 games. They are **not** a playoff team in a 162-game season unless they massively overperform ZiPS, I don't care what [Dick Monfort says](https://www.denverpost.com/2020/02/01/rockies-owner-dick-monfort-optimistic-2020-prospects/). But in a 60-game season, they have about a 1.0 percent chance of making the playoffs if 34 games is an accurate wins benchmark. This might not seem like much, but going from a "snowball's chance in hell" to 1.0 percent is a very significant change. The shorter schedule will more greatly affect the playoff chances for teams with a projected winning percentage around 0.500. 
 
-The charts in this post were created in python. Supporting documentation can be found [here]().
+The charts in this post were created in python. Supporting documentation can be found [here](https://github.com/cgutwein/cgutwein.github.io/blob/master/notebooks/SIMULATION.E1.ipynb).
