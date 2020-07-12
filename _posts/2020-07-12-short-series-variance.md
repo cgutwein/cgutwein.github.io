@@ -20,7 +20,7 @@ Total Trials: 4
 Heads: 1
 Probability of Heads: 0.25
 ```
-If we rely on the results of a small experiment consisting of a small sample (four trials), we might erroneously suspect the coin of being biased towards a result of heads. In practice, it takes more sampling to unlock the exact (if there is such a thing) probability of a result. What if we perform our coin flip experiment again, this time with ten trials:
+If we rely on the results of a small experiment consisting of a sample size of four trials, we might erroneously suspect the coin of being biased towards a result of heads. In practice, it takes more sampling to unlock the exact (if there is such a thing) probability of a result. What if we perform our coin flip experiment again, this time with ten trials:
 ```python
 Total Trials: 10
 Heads: 4
@@ -36,11 +36,11 @@ What we see is that even at 100 trials there is a chance that our experiment fai
 ### Power
 So we've established that sample size is important and has a significant impact on our view of the world and we know that the more trials we conduct in an experiment the more certain we are of the outcome. We clearly can't have an infinite number of trials though, so how do we determine the sufficient amount of trials to conduct? This brings us to statistical power, a measure of the confidence of an experiment.
 
-<img src="https://render.githubusercontent.com/render/math?math=\beta = \Phi\left(\frac{|\mu_t-\mu_c|\sqrt{N}}{2\sigma}-\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right)">
+$$\beta = \Phi\left(\frac{|\mu_t-\mu_c|\sqrt{N}}{2\sigma}-\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right)$$
 
-Power is represented by <img src="https://render.githubusercontent.com/render/math?math=\beta"> and the <img src="https://render.githubusercontent.com/render/math?math=\Phi(\bullet)"> is the normal cumulative distribution function with the effect size being represented by <img src="https://render.githubusercontent.com/render/math?math=|\mu_t-\mu_c|">, <img src="https://render.githubusercontent.com/render/math?math=\alpha"> being the desired level of statistical significance which is typically 0.05, and N representing the sample size. Let's rely on the *statsmodel* Python module for our power calculations. Before we get back to baseball, let's use our coin-flipping example to demonstrate how this works.
+Power is represented by $$\beta$$ and the $$\Phi(\bullet)$$ is the normal cumulative distribution function with the effect size being represented by $$|\mu_t-\mu_c|$$, $$\alpha$$ being the desired level of statistical significance which is typically 0.05, and N representing the sample size. Let's rely on the *statsmodel* Python module for our power calculations. Before we get back to baseball, let's use our coin-flipping example to demonstrate how this works.
 
-Suppose we have a coin that we suspect is biased to flipping tails 40% of the time. If we were to conduct an experiment to *prove* this suspicion, how many time would we need to flip the coin? The power solver in *statsmodels* allows us to specify our desired power and it will compute the number of samples needed. Here, we're going to aim for a power of 0.8 and an <img src="https://render.githubusercontent.com/render/math?math=\alpha"> of 0.05 which are both pretty standard. We'll also need to specify the **effect size**, which will be the difference between the an unbiased coin (<img src="https://render.githubusercontent.com/render/math?math=\mu_c=0.5">) and the supposed biased coin (<img src="https://render.githubusercontent.com/render/math?math=\mu_t=0.4">).
+Suppose we have a coin that we suspect is biased to flipping tails 40 percent of the time. If we were to conduct an experiment to *prove* this suspicion, how many times would we need to flip the coin? The power solver in *statsmodels* allows us to specify our desired power and it will compute the number of samples needed. Here, we're going to aim for a power of 0.8 and an $$\alpha$$ of 0.05 which are both pretty standard in scientific research. We'll also need to specify the **effect size**, which will be the difference between the an unbiased coin ($$math=\mu_c=0.5$$) and the supposed biased coin ($$\mu_t=0.4$$).
 ```python
 from statsmodels.stats.power import  tt_ind_solve_power
 mu_t, mu_c = 0.5, 0.4
@@ -53,7 +53,7 @@ print(Ncalc)
 ```
 Our power calculation tells us that we need to perform 1,570 coin flips to satisfy these constraints. In English, this means that if we want 80% of our experiments to detect an effect change of 0.1 with 95% confidence, then we must have a sample size of at least 1,570.
 ### Variance of outcomes
-Power of 0.8 is a high bar to set for a lot of experiments. In actuality there are compromises that need to be made. Even using the toy example of flipping a coin. If I ask my kids to conduct this coin flipping experiment, I bet they could stay focused on it for 100, maybe 200 coin flips. But 1,570? I doubt it. The outcome of the experiment is subject then to higher variance which means the resulting outcome is more likely to be wrong (i.e. less confident).
+Power of 0.8 is a high bar to set for a lot of experiments. In actuality there are compromises that need to be made. Even using the toy example of flipping a coin. If I ask my kids to conduct this coin flipping experiment, I bet they could stay focused on it for 100, maybe 200 coin flips. But 1,570? I doubt it. The outcome of the experiment is subject then to higher variance which means the result is more likely to be wrong (i.e. less confident).
 
 We can test this by simulating the experiment many times and seeing how different the results are. We'll replicate the experiment using *numpy* 100 times each as follows:
 * Experiment 1: Biased coin, 1,570 samples
@@ -86,7 +86,7 @@ The mean results of both experiments is essentially identical, with heads at 40.
 
 Okay now we can get back to baseball...
 ### What to expect in MLB's short season?
-So why did we spend so much time talking about flipping a coin? Determining the winner of a baseball game is the same thing. We're going to run another simulation, but it's not going to model a baseball season with a fancy algorithm that includes player's season histories or even pitching match-ups. We're going to model games as if they're coin flips and we'll use [Dan Szymborski](https://twitter.com/DSzymborski)'s [ZIPS projections for 2020](https://blogs.fangraphs.com/the-obscenely-late-obscenely-early-zips-projected-standings/#more-342236) to establish the bias of our coins. Since I write for [Purple Row](https://www.purplerow.com/) and I'm a Rockies fan, we'll use the Rockies as our case example.
+So why did we spend so much time talking about flipping a coin? Determining the winner of a baseball game is the same thing. We're going to run another simulation, but it's not going to model a baseball season with a sophisticated algorithm that includes player's season histories or even pitching match-ups. We're going to model games as if they're coin flips and we'll use [Dan Szymborski](https://twitter.com/DSzymborski)'s [ZIPS projections for 2020](https://blogs.fangraphs.com/the-obscenely-late-obscenely-early-zips-projected-standings/#more-342236) to establish the bias of our coins. Since I write for [Purple Row](https://www.purplerow.com/) and I'm a Rockies fan, we'll use the Rockies as our case example.
 
 To preface our simulation of the Rockies season, we need to establish a wins target for this team. They are *very, very* unlikely to win the NL West division, although with the shorter season this does become somewhat less unlikely. So, a Wild Card birth to the post-season is their path to the playoffs. For a 162-game season, it typically takes around 90 wins. If we prorate this for a 60 game season we're looking at 33.3 wins. To be safe, we'll target 34 wins. The ZiPS latest projection has the Rockies expected winning percentage at 0.433. So the Rockies are now a biased coin that flips heads 43.3 percent of the time. Now we'll once again run two separate simulations:
 * Simulation 1: 162-game season (100 replications)
