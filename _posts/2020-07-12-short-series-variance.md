@@ -38,9 +38,9 @@ So we've established that sample size is important and has a significant impact 
 
 $$\beta = \Phi\left(\frac{|\mu_t-\mu_c|\sqrt{N}}{2\sigma}-\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right)$$
 
-Power is represented by $$\beta$$ and the $$\Phi(\bullet)$$ is the normal cumulative distribution function with the effect size being represented by $$|\mu_t-\mu_c|$$, $$\alpha$$ being the desired level of statistical significance which is typically 0.05, and N representing the sample size. Let's rely on the *statsmodel* Python module for our power calculations. Before we get back to baseball, let's use our coin-flipping example to demonstrate how this works.
+Power is represented by $$\beta$$ and the $$\Phi(\bullet)$$ is the normal cumulative distribution function with the effect size being represented by $$\left|\mu_t-\mu_c\right|$$, $$\alpha$$ being the desired level of statistical significance which is typically 0.05, and N representing the sample size. Let's rely on the *statsmodel* Python module for our power calculations. Before we get back to baseball, let's use our coin-flipping example to demonstrate how this works.
 
-Suppose we have a coin that we suspect is biased to flipping tails 40 percent of the time. If we were to conduct an experiment to *prove* this suspicion, how many times would we need to flip the coin? The power solver in *statsmodels* allows us to specify our desired power and it will compute the number of samples needed. Here, we're going to aim for a power of 0.8 and an $$\alpha$$ of 0.05 which are both pretty standard in scientific research. We'll also need to specify the **effect size**, which will be the difference between the an unbiased coin ($$math=\mu_c=0.5$$) and the supposed biased coin ($$\mu_t=0.4$$).
+Suppose we have a coin that we suspect is biased to flipping tails 40 percent of the time. If we were to conduct an experiment to *prove* this suspicion, how many times would we need to flip the coin? The power solver in *statsmodels* allows us to specify our desired power and it will compute the number of samples needed. Here, we're going to aim for a power of 0.8 and an $$\alpha$$ of 0.05 which are both pretty standard in scientific research. We'll also need to specify the **effect size**, which will be the difference between the an unbiased coin ($$\mu_c=0.5$$) and the supposed biased coin ($$\mu_t=0.4$$).
 ```python
 from statsmodels.stats.power import  tt_ind_solve_power
 mu_t, mu_c = 0.5, 0.4
@@ -82,6 +82,7 @@ Experiment 2: 0.40493333333333337 0.04107034615550901 0.0016867733333333337
 The mean results of both experiments is essentially identical, with heads at 40.1% for Experiment 1 and 40.5% for Experiment 2. But the variance for Experiment 2 is almost three times what it is for Experiment 1. Typically we would set a confidence interval of $$2\sigma$$, or two standard deviations, from the mean. This gives us the following conclusion from the two experiments:
 * Experiment 1: True probability of heads is between 37.5% and 42.7%
 * Experiment 2: True probability of heads is between 32.3% and 48.7%
+
 ![](/../images/SIMULATION.E1.image1.png)
 
 Okay now we can get back to baseball...
@@ -91,8 +92,8 @@ So why did we spend so much time talking about flipping a coin? Determining the 
 To preface our simulation of the Rockies season, we need to establish a wins target for this team. They are *very, very* unlikely to win the NL West division, although with the shorter season this does become somewhat less unlikely. So, a Wild Card birth to the post-season is their path to the playoffs. For a 162-game season, it typically takes around 90 wins. If we prorate this for a 60 game season we're looking at 33.3 wins. To be safe, we'll target 34 wins. The ZiPS latest projection has the Rockies expected winning percentage at 0.433. So the Rockies are now a biased coin that flips heads 43.3 percent of the time. Now we'll once again run two separate simulations:
 * Simulation 1: 162-game season (100 replications)
 * Simulation 2: 60-game season (100 replications)
-![](/../images/SIMULATION.E1.image2.png)
-![](/../images/SIMULATION.E1.image3.png)
+
+![](/../images/SIMULATION.E1.image2.png) ![](/../images/SIMULATION.E1.image3.png)
 
 For a 162-game season, the Rockies have a less than 0.1 percent chance of winning more than 83 games. They are **not** a playoff team in a 162-game season unless they massively overperform ZiPS, I don't care what [Dick Monfort says](https://www.denverpost.com/2020/02/01/rockies-owner-dick-monfort-optimistic-2020-prospects/). But in a 60-game season, they have about a 1.0 percent chance of making the playoffs if 34 games is an accurate wins benchmark. This might not seem like much, but going from a "snowball's chance in hell" to 1.0 percent is a very significant change. The shorter schedule will more greatly affect the playoff chances for teams with a projected winning percentage around 0.500. 
 
