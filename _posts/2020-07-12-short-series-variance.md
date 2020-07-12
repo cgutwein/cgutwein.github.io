@@ -10,24 +10,24 @@ Baseball and statistics have long been synonymous, which is why I have no hesita
 >"the number of trials in an experiment"
 
 The classic example that we think of is flipping a coin. An unbiased, or unweighted, coin will have an equal probability of landing on head or tails. 50 percent chance, correct? So if we perform an "experiment" where we flip an unweighted coin four times, we would expect the coin to twice land on heads and twice on tails. (We'll use Python throughout this post to demonstrate these experiments.)
-```
+```python
 n = 4
 choices = ['heads', 'tails']
 result = np.random.choice(choices, n)
 print("Total Trials", n, "\nHeads:", sum(result == 'heads'), "\nProbability of Heads:", sum(result == 'heads')/n)
-
+//
 Total Trials: 4
 Heads: 1
 Probability of Heads: 0.25
 ```
 If we rely on the results of a small experiment consisting of a small sample (four trials), we might erroneously suspect the coin of being biased towards a result of heads. In practice, it takes more sampling to unlock the exact (if there is such a thing) probability of a result. What if we perform our coin flip experiment again, this time with ten trials:
-```
+```python
 Total Trials: 10
 Heads: 4
 Probability of Heads: 0.4
 ```
 And then with 100 trials?
-```
+```python
 Total Trials: 100
 Heads: 60
 Probability of Heads: 0.6
@@ -35,31 +35,31 @@ Probability of Heads: 0.6
 What we see is that even at 100 trials there is a chance that our experiment fails to reveal the true probability of the coin flipping heads. Eventually if we kept flipping coins, the true probability of 50 percent would be inescapably clear. This should help explain why the game of baseball is favored by statistician's over other games. The larger our sample size (i.e. more games, pitches, plate appearances etc.) the better understanding we have about the game because in the long run the truth shall be revealed!
 ### Power
 So we've established that sample size is important and has a significant impact on our view of the world and we know that the more trials we conduct in an experiment the more certain we are of the outcome. We clearly can't have an infinite number of trials though, so how do we determine the sufficient amount of trials to conduct? This brings us to statistical power, a measure of the confidence of an experiment.
-$
-\beta = \Phi\left(\frac{|\mu_t-\mu_c|\sqrt{N}}{2\sigma}-\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right)
-$
-Power is represented by $\beta$ and the $\Phi(\bullet)$ is the normal cumulative distribution function with the effect size being represented by $|\mu_t-\mu_c|$, $\alpha$ being the desired level of statistical significance which is typically 0.05, and N representing the sample size. Let's rely on the *statsmodel* Python module for our power calculations. Before we get back to baseball, let's use our coin-flipping example to demonstrate how this works.
 
-Suppose we have a coin that we suspect is biased to flipping tails 40% of the time. If we were to conduct an experiment to *prove* this suspicion, how many time would we need to flip the coin? The power solver in *statsmodels* allows us to specify our desired power and it will compute the number of samples needed. Here, we're going to aim for a power of 0.8 and an $\alpha$ of 0.05 which are both pretty standard. We'll also need to specify the **effect size**, which will be the difference between the an unbiased coin ($\mu_c=0.5$) and the supposed biased coin ($\mu_t=0.4$).
-```
+<img src="https://render.githubusercontent.com/render/math?math=\beta = \Phi\left(\frac{|\mu_t-\mu_c|\sqrt{N}}{2\sigma}-\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right)">
+
+Power is represented by <img src="https://render.githubusercontent.com/render/math?math=\beta"> and the <img src="https://render.githubusercontent.com/render/math?math=\Phi(\bullet)"> is the normal cumulative distribution function with the effect size being represented by <img src="https://render.githubusercontent.com/render/math?math=|\mu_t-\mu_c|">, <img src="https://render.githubusercontent.com/render/math?math=\alpha"> being the desired level of statistical significance which is typically 0.05, and N representing the sample size. Let's rely on the *statsmodel* Python module for our power calculations. Before we get back to baseball, let's use our coin-flipping example to demonstrate how this works.
+
+Suppose we have a coin that we suspect is biased to flipping tails 40% of the time. If we were to conduct an experiment to *prove* this suspicion, how many time would we need to flip the coin? The power solver in *statsmodels* allows us to specify our desired power and it will compute the number of samples needed. Here, we're going to aim for a power of 0.8 and an <img src="https://render.githubusercontent.com/render/math?math=\alpha"> of 0.05 which are both pretty standard. We'll also need to specify the **effect size**, which will be the difference between the an unbiased coin (<img src="https://render.githubusercontent.com/render/math?math=\mu_c=0.5">) and the supposed biased coin (<img src="https://render.githubusercontent.com/render/math?math=\mu_t=0.4">).
+```python
 from statsmodels.stats.power import  tt_ind_solve_power
 mu_t, mu_c = 0.5, 0.4
 effect_size = mu_t - mu_c
 N, alpha, power = 1000, 0.05, 0.8
 Ncalc = tt_ind_solve_power(effect_size=effect_size, power=power, nobs1=None, alpha=alpha, ratio=1.0)
 print(Ncalc)
-
+//
 1570.733066331529
 ```
-Our power calculation tells us that we need to perform $1,570$ coin flips to satisfy these constraints. In English, this means that if we want 80% of our experiments to detect an effect change of 0.1 with 95% confidence, then we must have a sample size of at least $1,570$.
+Our power calculation tells us that we need to perform 1,570 coin flips to satisfy these constraints. In English, this means that if we want 80% of our experiments to detect an effect change of 0.1 with 95% confidence, then we must have a sample size of at least 1,570.
 ### Variance of outcomes
-Power of 0.8 is a high bar to set for a lot of experiments. In actuality there are compromises that need to be made. Even using the toy example of flipping a coin. If I ask my kids to conduct this coin flipping experiment, I bet they could stay focused on it for 100, maybe 200 coin flips. But $1570$? I doubt it. The outcome of the experiment is subject then to higher variance which means the resulting outcome is more likely to be wrong (i.e. less confident).
+Power of 0.8 is a high bar to set for a lot of experiments. In actuality there are compromises that need to be made. Even using the toy example of flipping a coin. If I ask my kids to conduct this coin flipping experiment, I bet they could stay focused on it for 100, maybe 200 coin flips. But 1,570? I doubt it. The outcome of the experiment is subject then to higher variance which means the resulting outcome is more likely to be wrong (i.e. less confident).
 
 We can test this by simulating the experiment many times and seeing how different the results are. We'll replicate the experiment using *numpy* 100 times each as follows:
 * Experiment 1: Biased coin, 1,570 samples
 * Experiment 2: Biased coin, 150 samples
 
-```
+```python
 from scipy import stats
 N_1 = 1570
 results_1 = np.empty([1,100])
@@ -74,12 +74,12 @@ for i in range(100):
     temp_result = np.random.choice(choices, N_2, p=[mu_c, 1-mu_c])
     results_2[0,i] =sum(temp_result == 'heads')/N_2
 print("Experiment 2:",results_2.mean(), results_2.std(), results_2.var())
-
+//
 Experiment 1: 0.4009044585987261 0.012835044474719165 0.00016473836666801897
 Experiment 2: 0.40493333333333337 0.04107034615550901 0.0016867733333333337
 ```
 
-The mean results of both experiments is essentially identical, with heads at 40.1% for Experiment 1 and 40.5% for Experiment 2. But the variance for Experiment 2 is almost three times what it is for Experiment 1. Typically we would set a confidence interval of $2\sigma$, or two standard deviations, from the mean. This gives us the following conclusion from the two experiments:
+The mean results of both experiments is essentially identical, with heads at 40.1% for Experiment 1 and 40.5% for Experiment 2. But the variance for Experiment 2 is almost three times what it is for Experiment 1. Typically we would set a confidence interval of <img src="https://render.githubusercontent.com/render/math?math=2\sigma">, or two standard deviations, from the mean. This gives us the following conclusion from the two experiments:
 * Experiment 1: True probability of heads is between 37.5% and 42.7%
 * Experiment 2: True probability of heads is between 32.3% and 48.7%
 ![](/../images/SIMULATION.E1.image1.png)
