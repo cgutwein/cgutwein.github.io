@@ -58,9 +58,9 @@ Power of 0.8 is a high bar to set for a lot of experiments. In actuality there a
 We can test this by simulating the experiment many times and seeing how different the results are. We'll replicate the experiment using *numpy* 100 times each as follows:
 * Experiment 1: Biased coin, 1,570 samples
 * Experiment 2: Biased coin, 150 samples
+
 ```
 from scipy import stats
-# experiment 1
 N_1 = 1570
 results_1 = np.empty([1,100])
 for i in range(100):
@@ -68,7 +68,6 @@ for i in range(100):
     results_1[0,i] =sum(temp_result == 'heads')/N_1
 print("Experiment 1:",results_1.mean(), results_1.std(), results_1.var())
 
-# experiment 2
 N_2 = 150
 results_2 = np.empty([1,100])
 for i in range(100):
@@ -79,10 +78,12 @@ print("Experiment 2:",results_2.mean(), results_2.std(), results_2.var())
 Experiment 1: 0.4009044585987261 0.012835044474719165 0.00016473836666801897
 Experiment 2: 0.40493333333333337 0.04107034615550901 0.0016867733333333337
 ```
+
 The mean results of both experiments is essentially identical, with heads at 40.1% for Experiment 1 and 40.5% for Experiment 2. But the variance for Experiment 2 is almost three times what it is for Experiment 1. Typically we would set a confidence interval of $2\sigma$, or two standard deviations, from the mean. This gives us the following conclusion from the two experiments:
 * Experiment 1: True probability of heads is between 37.5% and 42.7%
 * Experiment 2: True probability of heads is between 32.3% and 48.7%
 ![](/../images/SIMULATION.E1.image1.png)
+
 Okay now we can get back to baseball...
 ### What to expect in MLB's short season?
 So why did we spend so much time talking about flipping a coin? Determining the winner of a baseball game is the same thing. We're going to run another simulation, but it's not going to model a baseball season with a fancy algorithm that includes player's season histories or even pitching match-ups. We're going to model games as if they're coin flips and we'll use [Dan Szymborski](https://twitter.com/DSzymborski)'s [ZIPS projections for 2020](https://blogs.fangraphs.com/the-obscenely-late-obscenely-early-zips-projected-standings/#more-342236) to establish the bias of our coins. Since I write for [Purple Row](https://www.purplerow.com/) and I'm a Rockies fan, we'll use the Rockies as our case example.
@@ -92,6 +93,7 @@ To preface our simulation of the Rockies season, we need to establish a wins tar
 * Simulation 2: 60-game season (100 replications)
 ![](/../images/SIMULATION.E1.image2.png)
 ![](/../images/SIMULATION.E1.image3.png)
+
 For a 162-game season, the Rockies have a less than 0.1 percent chance of winning more than 83 games. They are **not** a playoff team in a 162-game season unless they massively overperform ZiPS, I don't care what [Dick Monfort says](https://www.denverpost.com/2020/02/01/rockies-owner-dick-monfort-optimistic-2020-prospects/). But in a 60-game season, they have about a 1.0 percent chance of making the playoffs if 34 games is an accurate wins benchmark. This might not seem like much, but going from a "snowball's chance in hell" to 1.0 percent is a very significant change. The shorter schedule will more greatly affect the playoff chances for teams with a projected winning percentage around 0.500. 
 
 The charts in this post were created in python. Supporting documentation can be found [here]().
